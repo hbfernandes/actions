@@ -1,0 +1,19 @@
+name: Containerized Maven Build
+description: Provides a custom Maven environment to run on
+inputs:
+  path:  
+    description: Relative path within the workspace to use as workdir
+    required: false
+  args:  
+    description: The maven command arguments
+    required: true
+    default: -v
+runs:
+  using: docker
+  image: Dockerfile #docker://maven:3.6.2-jdk-8-slim
+  env:
+    WORK_DIR: ${{ inputs.path }}
+  args:
+    - mvn
+    - -B
+    - ${{ inputs.args }}

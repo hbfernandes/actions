@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <localRepository>${env.GITHUB_WORKSPACE}/.m2/repository</localRepository>
+
+  <mirrors>
+    <mirror>
+      <id>pentaho.resolve.repo</id>
+      <url>https://nexus.pentaho.org/content/groups/omni</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>pentaho</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <!-- hide test output clutter -->
+        <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
+
+        <!-- let the build become unstable with failed tests instead of failing -->
+        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+
+        <!-- sonar -->
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>hbfernandes</sonar.organization>
+      </properties>
+      <repositories>
+        <repository>
+          <id>pentaho-public</id>
+          <name>pentaho-public</name>
+          <url>https://nexus.pentaho.org/content/groups/omni</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>pentaho-public</id>
+          <name>pentaho-public</name>
+          <url>https://nexus.pentaho.org/content/groups/omni</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+</settings>
