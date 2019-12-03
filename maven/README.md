@@ -1,21 +1,19 @@
-# Hello world docker action
+# Maven docker action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action allows running a Maven command within a docker container.
 
 ## Inputs
 
-### `who-to-greet`
+### `path`
+Path where to run the maven command, relative to workspace or absolute.
 
-**Required** The name of the person to greet. Default `"World"`.
-
-## Outputs
-
-### `time`
-
-The time we greeted you.
+### `args`
+Maven command arguments.
 
 ## Example usage
-
-uses: actions/hello-world-docker-action@v1
+```
+uses: hbfernandes/actions/maven@master
 with:
-  who-to-greet: 'Mona the Octocat'
+  path: where/to/run
+  args: install
+```
