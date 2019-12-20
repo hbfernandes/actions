@@ -10,7 +10,7 @@ inputs:
     default: -v
 runs:
   using: docker
-  image: Dockerfile #docker://maven:3.6.2-jdk-8-slim
+  image: pentaho/maven
   env:
     WORK_DIR: ${{ inputs.path }}
   args:
