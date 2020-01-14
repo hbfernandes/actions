@@ -1,0 +1,16 @@
+name: 'Maven'
+description: 'Run a maven command'
+inputs:
+  args:
+    description: 'Maven command arguments'
+    required: false
+    default: '--version'
+  path:
+    description: 'Relative path withing the /workspace diretory of the container'
+    required: false
+  volumes:
+    description: 'Additional volumes mounts provided to the container'
+    required: false
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
